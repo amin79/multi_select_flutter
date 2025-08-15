@@ -183,7 +183,7 @@ class _MultiSelectDialogState<T> extends State<MultiSelectDialog<T>> {
       padding: const EdgeInsets.all(2.0),
       child: ChoiceChip(
         backgroundColor: widget.unselectedColor,
-        showCheckmark: widget.showCheckmark,
+        showCheckmark: false,
         selectedColor: widget.colorator?.call(item.value) ??
             widget.selectedColor ??
             Theme.of(context).primaryColor.withOpacity(0.35),

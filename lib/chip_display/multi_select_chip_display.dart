@@ -135,7 +135,7 @@ class MultiSelectChipDisplay<V> extends StatelessWidget {
       padding: const EdgeInsets.all(2.0),
       child: ChoiceChip(
         shape: shape as OutlinedBorder?,
-        showCheckmark: showCheckmark,
+        showCheckmark: false,
         label: Container(
           width: chipWidth,
           child: Text(
