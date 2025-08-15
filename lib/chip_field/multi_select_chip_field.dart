@@ -488,17 +488,21 @@ class __MultiSelectChipFieldViewState<V>
               ),
             ),
         avatar: _selectedValues.contains(item.value)
-            ? widget.icon != null
-                ? Icon(
-                    widget.icon!.icon,
-                    color: widget.colorator != null &&
-                            widget.colorator!(item.value) != null
-                        ? widget.colorator!(item.value)!.withOpacity(1)
-                        : widget.icon!.color ??
-                            widget.selectedChipColor ??
-                            Theme.of(context).primaryColor,
-                  )
-                : const SizedBox.shrink()
+            ? (widget.showCheckmark
+                    ? (widget.icon != null
+                        ? Icon(
+                            widget.icon!.icon,
+                            color: widget.colorator != null &&
+                                    widget.colorator!(item.value) != null
+                                ? widget.colorator!(item.value)!.withOpacity(1)
+                                : widget.icon!.color ??
+                                    widget.selectedChipColor ??
+                                    Theme.of(context).primaryColor,
+                          )
+                        : null)
+                    : const SizedBox
+                        .shrink() // ← وقتی showCheckmark=false تیک کاملاً قطع میشه
+                )
             : null,
         label: Container(
           width: widget.chipWidth,
