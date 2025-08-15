@@ -186,6 +186,7 @@ class _MultiSelectChipFieldView<V> extends StatefulWidget
   final Function(ScrollController)? scrollControl;
   final HorizontalScrollBar? scrollBar;
   final bool showHeader;
+  final bool showCheckmark;
   final double? chipWidth;
 
   _MultiSelectChipFieldView({
@@ -216,6 +217,7 @@ class _MultiSelectChipFieldView<V> extends StatefulWidget
     this.scrollBar,
     this.showHeader = true,
     this.chipWidth,
+    this.showCheckmark = true,
   });
 
   /// This constructor allows a FormFieldState to be passed in. Called by MultiSelectChipField.
@@ -248,6 +250,7 @@ class _MultiSelectChipFieldView<V> extends StatefulWidget
         scrollBar = field.scrollBar,
         showHeader = field.showHeader,
         chipWidth = field.chipWidth,
+        showCheckmark = field.showCheckmark,
         state = state;
 
   @override
@@ -469,6 +472,7 @@ class __MultiSelectChipFieldViewState<V>
       margin: EdgeInsets.all(0),
       padding: const EdgeInsets.all(2.0),
       child: ChoiceChip(
+        showCheckmark: widget.showCheckmark,
         shape: widget.chipShape as OutlinedBorder? ??
             RoundedRectangleBorder(
               side: BorderSide(

@@ -48,6 +48,8 @@ class MultiSelectChipDisplay<V> extends StatelessWidget {
 
   bool? disabled;
 
+  bool showCheckmark;
+
   MultiSelectChipDisplay({
     this.items,
     this.onTap,
@@ -62,6 +64,7 @@ class MultiSelectChipDisplay<V> extends StatelessWidget {
     this.scrollBar,
     this.height,
     this.chipWidth,
+    this.showCheckmark = true,
   }) {
     this.disabled = false;
   }
@@ -81,6 +84,7 @@ class MultiSelectChipDisplay<V> extends StatelessWidget {
     this.scrollBar,
     this.height,
     this.chipWidth,
+    this.showCheckmark = true,
   });
 
   @override
@@ -131,10 +135,15 @@ class MultiSelectChipDisplay<V> extends StatelessWidget {
       padding: const EdgeInsets.all(2.0),
       child: ChoiceChip(
         shape: shape as OutlinedBorder?,
+        showCheckmark: showCheckmark,
         avatar: icon != null
-            ? Icon(icon!.icon,
-                color: icon!.color ?? Theme.of(context).primaryColor)
-            : const SizedBox.shrink(),
+            ? Icon(
+                icon!.icon,
+                color: colorator != null && colorator!(item.value) != null
+                    ? colorator!(item.value)!.withOpacity(1)
+                    : icon!.color ?? Theme.of(context).primaryColor,
+              )
+            : null,
         label: Container(
           width: chipWidth,
           child: Text(
