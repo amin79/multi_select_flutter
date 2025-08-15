@@ -494,7 +494,7 @@ class __MultiSelectChipFieldViewState<V>
                             widget.selectedChipColor ??
                             Theme.of(context).primaryColor,
                   )
-                : null
+                : const SizedBox.shrink()
             : null,
         label: Container(
           width: widget.chipWidth,
