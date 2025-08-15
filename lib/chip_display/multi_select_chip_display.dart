@@ -132,13 +132,9 @@ class MultiSelectChipDisplay<V> extends StatelessWidget {
       child: ChoiceChip(
         shape: shape as OutlinedBorder?,
         avatar: icon != null
-            ? Icon(
-                icon!.icon,
-                color: colorator != null && colorator!(item.value) != null
-                    ? colorator!(item.value)!.withOpacity(1)
-                    : icon!.color ?? Theme.of(context).primaryColor,
-              )
-            : null,
+            ? Icon(icon!.icon,
+                color: icon!.color ?? Theme.of(context).primaryColor)
+            : const SizedBox.shrink(),
         label: Container(
           width: chipWidth,
           child: Text(
