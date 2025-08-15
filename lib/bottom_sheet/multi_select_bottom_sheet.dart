@@ -79,32 +79,34 @@ class MultiSelectBottomSheet<T> extends StatefulWidget
   /// Set the color of the check in the checkbox
   final Color? checkColor;
 
-  MultiSelectBottomSheet({
-    required this.items,
-    required this.initialValue,
-    this.title,
-    this.onSelectionChanged,
-    this.onConfirm,
-    this.listType,
-    this.cancelText,
-    this.confirmText,
-    this.searchable = false,
-    this.selectedColor,
-    this.initialChildSize,
-    this.minChildSize,
-    this.maxChildSize,
-    this.colorator,
-    this.unselectedColor,
-    this.searchIcon,
-    this.closeSearchIcon,
-    this.itemsTextStyle,
-    this.searchTextStyle,
-    this.searchHint,
-    this.searchHintStyle,
-    this.selectedItemsTextStyle,
-    this.separateSelectedItems = false,
-    this.checkColor,
-  });
+  final bool showCheckmark;
+
+  MultiSelectBottomSheet(
+      {required this.items,
+      required this.initialValue,
+      this.title,
+      this.onSelectionChanged,
+      this.onConfirm,
+      this.listType,
+      this.cancelText,
+      this.confirmText,
+      this.searchable = false,
+      this.selectedColor,
+      this.initialChildSize,
+      this.minChildSize,
+      this.maxChildSize,
+      this.colorator,
+      this.unselectedColor,
+      this.searchIcon,
+      this.closeSearchIcon,
+      this.itemsTextStyle,
+      this.searchTextStyle,
+      this.searchHint,
+      this.searchHintStyle,
+      this.selectedItemsTextStyle,
+      this.separateSelectedItems = false,
+      this.checkColor,
+      this.showCheckmark = true});
 
   @override
   _MultiSelectBottomSheetState<T> createState() =>
@@ -182,6 +184,7 @@ class _MultiSelectBottomSheetState<T> extends State<MultiSelectBottomSheet<T>> {
       padding: const EdgeInsets.all(2.0),
       child: ChoiceChip(
         backgroundColor: widget.unselectedColor,
+        showCheckmark: widget.showCheckmark,
         selectedColor:
             widget.colorator != null && widget.colorator!(item.value) != null
                 ? widget.colorator!(item.value)

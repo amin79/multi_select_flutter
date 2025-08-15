@@ -78,6 +78,8 @@ class MultiSelectDialog<T> extends StatefulWidget with MultiSelectActions<T> {
   /// Set the color of the check in the checkbox
   final Color? checkColor;
 
+  final bool showCheckmark;
+
   MultiSelectDialog({
     required this.items,
     required this.initialValue,
@@ -103,6 +105,7 @@ class MultiSelectDialog<T> extends StatefulWidget with MultiSelectActions<T> {
     this.selectedItemsTextStyle,
     this.separateSelectedItems = false,
     this.checkColor,
+    this.showCheckmark = true,
   });
 
   @override
@@ -180,6 +183,7 @@ class _MultiSelectDialogState<T> extends State<MultiSelectDialog<T>> {
       padding: const EdgeInsets.all(2.0),
       child: ChoiceChip(
         backgroundColor: widget.unselectedColor,
+        showCheckmark: widget.showCheckmark,
         selectedColor: widget.colorator?.call(item.value) ??
             widget.selectedColor ??
             Theme.of(context).primaryColor.withOpacity(0.35),
